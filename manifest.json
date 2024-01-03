@@ -1,27 +1,49 @@
 {
   "manifest_version": 2,
   "name": "Logseq Clipper",
-  "description": "Transfer webpage text clippings to Logseq Blocks",
+  "description": "Select text and export as a logseq block.",
   "version": "0.0.1",
   "icons": {
     "64": "icons/icon.png"
   },
+  "permissions": [
+    "activeTab",
+    "clipboardWrite"
+  ],
   "background": {
     "scripts": [
       "background_script.js"
-    ]
+    ],
+    "persistent": false
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://*.mozilla.org/*"
-      ],
-      "js": [
-        "content_script.js"
-      ]
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"]
     }
   ],
   "options_ui": {
-    "page": "options/index.html"
+    "page": "options/index.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "activate-extension": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+Y"
+        },
+        "description": "Clip LogSeq TODO block"
+    },
+    "activate-alternate-extension": {
+      "suggested_key": {
+          "default": "Ctrl+Shift+U"
+      },
+      "description": "Clip LogSeq block"
+    },
+    "copy-to-clipboard": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+I"
+        },
+        "description": "Copy content to clipboard"
+    }
   }
 }
