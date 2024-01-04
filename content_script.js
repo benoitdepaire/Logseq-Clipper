@@ -90,9 +90,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           const pageInfo = getPageInfo();
           let initialContent;
           if (useAlternateTemplate) {
-              initialContent = `- ${pageInfo.title}\n  created:: ${getCurrentDate()}\n  ref:: [web-source](${pageInfo.url})`;
+              initialContent = `- ${pageInfo.title}\n  created:: [[${getCurrentDate()}]]\n  ref:: [web-source](${pageInfo.url})`;
           } else {
-              initialContent = `- TODO ${pageInfo.title}\n  created:: ${getCurrentDate()}\n  related-to:: \n  deadline:: \n  ref:: [web-source](${pageInfo.url})`;
+              initialContent = `- TODO ${pageInfo.title}\n  created:: [[${getCurrentDate()}]]\n  related-to:: \n  deadline:: \n  ref:: [web-source](${pageInfo.url})`;
           }
           if (pageInfo.selectedText) {
               const formattedText = formatSelectedText(pageInfo.selectedText);
